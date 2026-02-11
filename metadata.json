@@ -1,6 +1,6 @@
 {
-  "name": "Copy of Lumina: The Learning Journal",
-  "description": "A high-fidelity learning journal application that helps you capture daily insights, facts, words, and quotes with AI-enhanced assistance.",
+  "name": "Memento",
+  "description": "Memento - A beautiful learning journal application that helps you capture daily insights, facts, words, and quotes with AI-enhanced assistance.",
   "requestFramePermissions": [
     "camera",
     "microphone"

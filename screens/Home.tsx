@@ -59,7 +59,7 @@ const Home: React.FC<HomeProps> = ({ entries, onAdd }) => {
             <div class="w-full h-full bg-white dark:bg-[#1a232e] rounded-3xl shadow-2xl p-8 border border-slate-100 dark:border-slate-700/50 flex flex-col relative overflow-hidden group">
               <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-full -mr-8 -mt-8"></div>
               
-              <div class="flex justify-between items-start mb-8 relative z-10">
+              <div class="flex justify-between items-start mb-8 relative z-10 shrink-0">
                 <div class="flex flex-col">
                   <span class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Today</span>
                   <span class="text-sm font-medium text-slate-500 dark:text-slate-400">Thu, Oct 24</span>
@@ -69,10 +69,15 @@ const Home: React.FC<HomeProps> = ({ entries, onAdd }) => {
                 </span>
               </div>
 
-              <div class="flex-1 flex flex-col justify-center items-start relative z-10">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white leading-tight">
+              {/* Title - Always Visible */}
+              <div class="relative z-10 shrink-0 mb-4">
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight">
                   {todayEntry.title}
                 </h1>
+              </div>
+
+              {/* Scrollable Content Area */}
+              <div class="flex-1 flex flex-col items-start relative z-10 overflow-y-auto no-scrollbar min-h-0">
                 {todayEntry.phonetic && (
                   <div class="flex items-center gap-2 mb-6 text-slate-400 italic">
                     <span class="font-serif text-lg">{todayEntry.phonetic}</span>
@@ -90,7 +95,7 @@ const Home: React.FC<HomeProps> = ({ entries, onAdd }) => {
                 )}
               </div>
 
-              <div class="mt-auto pt-6 flex justify-between items-center border-t border-slate-100 dark:border-slate-800 relative z-10">
+              <div class="mt-auto pt-6 flex justify-between items-center border-t border-slate-100 dark:border-slate-800 relative z-10 shrink-0">
                 <button class="flex items-center gap-2 text-slate-400 hover:text-red-400 transition-colors">
                   <span class="material-icons-round text-xl">favorite_border</span>
                 </button>
