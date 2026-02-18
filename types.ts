@@ -1,4 +1,3 @@
-
 export enum EntryCategory {
   FACT = 'Fact',
   WORD = 'Word',
@@ -8,13 +7,22 @@ export enum EntryCategory {
 
 export interface JournalEntry {
   id: string;
-  date: Date;
+  user_id: string;
   title: string;
   content: string;
   category: EntryCategory;
-  phonetic?: string;
-  example?: string;
-  isFavorite?: boolean;
+  phonetic?: string | null;
+  example?: string | null;
+  is_favorite: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
-export type ScreenType = 'home' | 'search' | 'new' | 'history' | 'stats' | 'profile';
+export interface AuthUser {
+  id: string;
+  email: string;
+  username: string;
+  created_at: string;
+}
+
+export type ScreenType = 'home' | 'search' | 'new' | 'history' | 'stats' | 'profile' | 'login';
