@@ -1,3 +1,6 @@
 name = "memento-web"
 compatibility_date = "2024-01-01"
 pages_build_output_dir = "./dist"
+
+[vars]
+VITE_API_URL = "https://memento-api-production.up.railway.app"
