@@ -5,6 +5,12 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
+    
+    // Log the variable during the build so we can see it in Cloudflare's Deployment Logs
+    console.log("=== BUILD CLOUDFLARE ENV CHECK ===");
+    console.log("process.env.VITE_API_URL =", process.env.VITE_API_URL);
+    console.log("==================================");
+
     return {
       server: {
         port: 3000,
