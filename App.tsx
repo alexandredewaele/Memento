@@ -27,7 +27,6 @@ const AppContent: React.FC = () => {
     }
   }, []);
 
-  // Fetch entries whenever the user logs in
   useEffect(() => {
     if (user) {
       fetchEntries();
@@ -50,16 +49,14 @@ const AppContent: React.FC = () => {
     setEntries((prev) => prev.filter((e) => e.id !== id));
   };
 
-  // Show nothing while restoring session
   if (isLoading) {
     return (
-      <div className="h-full flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center">
         <span className="material-icons-round animate-spin text-primary text-4xl">refresh</span>
       </div>
     );
   }
 
-  // Not logged in → show Login
   if (!user) {
     return <Login />;
   }
@@ -94,17 +91,17 @@ const AppContent: React.FC = () => {
         return <History entries={entries} />;
       case 'profile':
         return (
-          <div className="h-full flex flex-col items-center justify-center gap-4 px-8">
-            <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
-              <span className="material-icons-round text-white text-3xl">person</span>
+          <div className="flex flex-col items-center justify-center h-full gap-6 px-8">
+            <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
+              <span className="material-icons-round text-white text-4xl">person</span>
             </div>
             <div className="text-center">
-              <p className="text-xl font-bold text-slate-900 dark:text-white">{user.username}</p>
-              <p className="text-sm text-slate-500 dark:text-slate-400">{user.email}</p>
+              <p className="text-2xl font-bold text-slate-900 dark:text-white">{user.username}</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{user.email}</p>
             </div>
             <button
               onClick={logout}
-              className="mt-4 flex items-center gap-2 px-6 py-3 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 font-semibold border border-red-200 dark:border-red-800 hover:bg-red-100 transition-colors"
+              className="mt-2 flex items-center gap-2 px-6 py-3 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 font-semibold border border-red-200 dark:border-red-800 hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
             >
               <span className="material-icons-round">logout</span>
               Sign Out
@@ -117,34 +114,22 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="flex-1 overflow-hidden relative">
+    <div className="flex h-screen w-full overflow-hidden bg-background-light dark:bg-background-dark font-display">
+      {/* Sidebar Navigation */}
+      <Navigation currentScreen={currentScreen} onNavigate={setCurrentScreen} username={user.username} onLogout={logout} />
+
+      {/* Main content area */}
+      <main className="flex-1 overflow-hidden flex flex-col">
         {renderScreen()}
-      </div>
-      {currentScreen !== 'new' && (
-        <Navigation currentScreen={currentScreen} onNavigate={setCurrentScreen} />
-      )}
-    </>
+      </main>
+    </div>
   );
 };
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
-      <div className="flex justify-center min-h-screen md:py-8 font-display">
-        <div className="relative w-full max-w-md h-[100dvh] md:h-[844px] bg-background-light dark:bg-background-dark md:rounded-[2.5rem] md:shadow-2xl overflow-hidden flex flex-col md:border-[8px] md:border-gray-800 transition-all duration-500">
-          {/* iOS-style Status Bar */}
-          <div className="h-10 w-full flex items-center justify-between px-6 pt-2 shrink-0 z-50">
-            <span className="text-xs font-semibold opacity-80">9:41</span>
-            <div className="flex gap-1 items-center">
-              <span className="material-icons-round text-[14px]">signal_cellular_alt</span>
-              <span className="material-icons-round text-[14px]">wifi</span>
-              <span className="material-icons-round text-[14px]">battery_full</span>
-            </div>
-          </div>
-          <AppContent />
-        </div>
-      </div>
+      <AppContent />
     </AuthProvider>
   );
 };
