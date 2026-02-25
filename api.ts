@@ -1,4 +1,10 @@
-import { AuthUser, EntryCategory, JournalEntry } from './types'
+import {
+  AuthUser,
+  JournalEntry,
+  GetEntriesParams,
+  EntryListResponse,
+  EntryPayload,
+} from './types'
 
 const BASE_URL =
   import.meta.env.VITE_API_URL ||
@@ -69,21 +75,6 @@ export async function getMe(): Promise<AuthUser> {
 
 // ── Entries ───────────────────────────────────────────────────────────────────
 
-export interface GetEntriesParams {
-  category?: EntryCategory
-  search?: string
-  is_favorite?: boolean
-  skip?: number
-  limit?: number
-}
-
-export interface EntryListResponse {
-  entries: JournalEntry[]
-  total: number
-  skip: number
-  limit: number
-}
-
 export async function getEntries(
   params: GetEntriesParams = {},
 ): Promise<EntryListResponse> {
@@ -96,15 +87,6 @@ export async function getEntries(
   if (params.limit !== undefined) qs.set('limit', String(params.limit))
   const query = qs.toString() ? `?${qs}` : ''
   return request(`/api/entries${query}`)
-}
-
-export interface EntryPayload {
-  title: string
-  content: string
-  category: EntryCategory
-  phonetic?: string
-  example?: string
-  is_favorite?: boolean
 }
 
 export async function createEntry(

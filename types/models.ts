@@ -17,19 +17,3 @@ export interface JournalEntry {
   created_at: string
   updated_at: string
 }
-
-export interface AuthUser {
-  id: string
-  email: string
-  username: string
-  created_at: string
-}
-
-export type ScreenType =
-  | 'home'
-  | 'search'
-  | 'new'
-  | 'history'
-  | 'stats'
-  | 'profile'
-  | 'login'

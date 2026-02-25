@@ -1,6 +1,4 @@
-export interface Env {
-  VITE_API_URL: string
-}
+import { Env } from './types'
 
 // Note: `PagesFunction` is a type from Cloudflare Workers that runs on the server (Edge),
 // it does not run in the browser where your React app (and api.ts) runs.
