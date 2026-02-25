@@ -4,7 +4,8 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, '.', '')
+  const env = loadEnv(mode, process.cwd(), '')
+  Object.assign(process.env, env)
 
   // Log the variable during the build so we can see it in Cloudflare's Deployment Logs
   console.log('=== BUILD CLOUDFLARE ENV CHECK ===')
@@ -77,6 +78,7 @@ export default defineConfig(({ mode }) => {
     define: {
       'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+      'process.env.VITE_API_URL': JSON.stringify(env.VITE_API_URL),
     },
     resolve: {
       alias: {
