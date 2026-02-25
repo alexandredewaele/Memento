@@ -1,23 +1,34 @@
-import React from 'react';
+import React from 'react'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
-  error?: string;
-  containerClassName?: string;
-  variant?: 'default' | 'error';
+  label?: string
+  error?: string
+  containerClassName?: string
+  variant?: 'default' | 'error'
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, variant = 'default', className = '', containerClassName = '', ...props }, ref) => {
-    const isError = variant === 'error' || !!error;
-    const currentVariant = isError ? 'error' : 'default';
+  (
+    {
+      label,
+      error,
+      variant = 'default',
+      className = '',
+      containerClassName = '',
+      ...props
+    },
+    ref,
+  ) => {
+    const isError = variant === 'error' || !!error
+    const currentVariant = isError ? 'error' : 'default'
 
-    const baseStyles = "w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 text-sm transition-colors";
-    
+    const baseStyles =
+      'w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 text-sm transition-colors'
+
     const variants = {
-      default: "border-slate-200 dark:border-slate-700 focus:ring-primary",
-      error: "border-red-500 focus:ring-red-500"
-    };
+      default: 'border-slate-200 dark:border-slate-700 focus:ring-primary',
+      error: 'border-red-500 focus:ring-red-500',
+    }
 
     return (
       <div className={containerClassName}>
@@ -31,10 +42,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           className={`${baseStyles} ${variants[currentVariant]} ${className}`}
           {...props}
         />
-        {error && <p className="mt-1.5 text-xs text-red-500 font-medium">{error}</p>}
+        {error && (
+          <p className="mt-1.5 text-xs text-red-500 font-medium">{error}</p>
+        )}
       </div>
-    );
-  }
-);
+    )
+  },
+)
 
-Input.displayName = 'Input';
+Input.displayName = 'Input'

@@ -1,8 +1,5 @@
 {
   "name": "Memento",
   "description": "Memento - A beautiful learning journal application that helps you capture daily insights, facts, words, and quotes with AI-enhanced assistance.",
-  "requestFramePermissions": [
-    "camera",
-    "microphone"
-  ]
+  "requestFramePermissions": ["camera", "microphone"]
 }
