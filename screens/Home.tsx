@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { JournalEntry } from '../types'
-import * as api from '../api'
+import * as api from '../api/entries'
 import { Button } from '../components/Button'
 interface HomeProps {
   entries: JournalEntry[]

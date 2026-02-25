@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { EntryCategory, JournalEntry } from '../types'
-import * as api from '../api'
+import * as api from '../api/entries'
 
 interface SearchProps {
   entries: JournalEntry[]

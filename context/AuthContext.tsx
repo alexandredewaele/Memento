@@ -6,7 +6,7 @@ import React, {
   useCallback,
 } from 'react'
 import { AuthUser, AuthContextValue } from '../types'
-import * as api from '../api'
+import * as api from '../api/auth'
 
 const AuthContext = createContext<AuthContextValue | null>(null)
 

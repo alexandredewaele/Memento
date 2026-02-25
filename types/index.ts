@@ -1,5 +1,5 @@
 export * from './models'
 export * from './auth'
 export * from './ui'
-export * from './api'
+export * from './api/entries'
 export * from './env'

@@ -7,7 +7,7 @@ import NewEntry from './screens/NewEntry'
 import History from './screens/History'
 import Login from './screens/Login'
 import Navigation from './components/Navigation'
-import * as api from './api'
+import * as api from './api/entries'
 
 const AppContent: React.FC = () => {
   const { user, isLoading, logout } = useAuth()
