@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-
+import { Button } from '../components/Button';
+import { Input } from '../components/Input';
 const Login: React.FC = () => {
   const { login, register } = useAuth();
   const [tab, setTab] = useState<'login' | 'register'>('login');
@@ -72,7 +73,7 @@ const Login: React.FC = () => {
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Memento</h1>
         </div>
 
-        <div className="w-full max-w-sm">
+        <div className="w-full max-w-sm text-center">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">
             {tab === 'login' ? 'Welcome back' : 'Create account'}
           </h2>
@@ -98,46 +99,37 @@ const Login: React.FC = () => {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Email</label>
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
-                className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary text-sm"
-              />
-            </div>
+          <form onSubmit={handleSubmit} className="space-y-4 text-left">
+            <Input
+              label="Email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@example.com"
+            />
 
             {tab === 'register' && (
-              <div>
-                <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Username</label>
-                <input
-                  type="text"
-                  required
-                  minLength={3}
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="yourname"
-                  className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary text-sm"
-                />
-              </div>
+              <Input
+                label="Username"
+                type="text"
+                required
+                minLength={3}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="yourname"
+              />
             )}
 
-            <div>
-              <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Password</label>
-              <input
-                type="password"
-                required
-                minLength={8}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary text-sm"
-              />
-            </div>
+            <Input
+              label="Password"
+              type="password"
+              required
+              minLength={8}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+            />
 
             {error && (
               <div className="flex items-center gap-2 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl px-4 py-3">
@@ -146,20 +138,14 @@ const Login: React.FC = () => {
               </div>
             )}
 
-            <button
+            <Button
               type="submit"
-              disabled={loading}
-              className="w-full bg-primary hover:bg-blue-600 disabled:opacity-60 text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2 mt-2"
+              isLoading={loading}
+              className="w-full py-3.5 mt-2"
             >
-              {loading ? (
-                <span className="material-icons-round animate-spin text-xl">refresh</span>
-              ) : (
-                <>
-                  {tab === 'login' ? 'Sign In' : 'Create Account'}
-                  <span className="material-icons-round text-xl">arrow_forward</span>
-                </>
-              )}
-            </button>
+              {tab === 'login' ? 'Sign In' : 'Create Account'}
+              <span className="material-icons-round text-xl">arrow_forward</span>
+            </Button>
           </form>
         </div>
       </div>

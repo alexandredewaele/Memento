@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { EntryCategory, JournalEntry } from '../types';
 import * as api from '../api';
-
+import { Button } from '../components/Button';
+import { Input } from '../components/Input';
 interface NewEntryProps {
   onSaved: (entry: JournalEntry) => void;
   onCancel: () => void;
@@ -114,23 +115,21 @@ const NewEntry: React.FC<NewEntryProps> = ({ onSaved, onCancel }) => {
 
         {/* Actions */}
         <div className="flex items-center gap-3">
-          <button
+          <Button
+            variant="secondary"
             onClick={onCancel}
-            className="px-6 py-3 rounded-xl font-semibold border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="px-6 py-3"
           >
             Cancel
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={handleSave}
-            disabled={!content.trim() || loading}
-            className="flex-1 bg-primary hover:bg-blue-600 disabled:opacity-50 active:scale-[0.99] text-white font-semibold py-3 px-6 rounded-xl shadow-xl shadow-primary/20 transition-all flex items-center justify-center gap-2"
+            disabled={!content.trim()}
+            isLoading={loading}
+            className="flex-1 py-3 px-6"
           >
-            {loading ? (
-              <span className="material-icons-round animate-spin text-xl">refresh</span>
-            ) : (
-              <>Save to Journal <span className="material-icons-round">arrow_forward</span></>
-            )}
-          </button>
+            Save to Journal <span className="material-icons-round">arrow_forward</span>
+          </Button>
         </div>
       </div>
     </div>

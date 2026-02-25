@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { JournalEntry } from '../types';
 import * as api from '../api';
-
+import { Button } from '../components/Button';
 interface HomeProps {
   entries: JournalEntry[];
   loading: boolean;
@@ -46,12 +46,12 @@ const Home: React.FC<HomeProps> = ({ entries, loading, onAdd, onFavoriteToggled 
         </div>
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white">No entries yet</h2>
         <p className="text-slate-500 dark:text-slate-400">Click "New Entry" to capture your first learning.</p>
-        <button
+        <Button
           onClick={onAdd}
-          className="mt-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold shadow-lg shadow-primary/20 hover:bg-blue-600 transition-colors"
+          className="mt-2 px-6 py-3"
         >
           Add First Entry
-        </button>
+        </Button>
       </div>
     );
   }
