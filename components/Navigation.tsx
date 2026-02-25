@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScreenType } from '../types'
+import { ScreenType } from '@/types'
 
 interface NavigationProps {
   currentScreen: ScreenType

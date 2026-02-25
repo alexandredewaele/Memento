@@ -1,5 +1,5 @@
-import { AuthUser } from '../types'
-import { request, BASE_URL } from '../api'
+import { AuthUser } from '@/types'
+import { request, BASE_URL } from '@/api'
 
 export async function register(
   email: string,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { EntryCategory, JournalEntry } from '../types'
-import * as api from '../api/entries'
-import { Button } from '../components/Button'
+import { EntryCategory, JournalEntry } from '@/types'
+import * as api from '@/api/entries'
+import { Button } from '@/components/Button'
 interface NewEntryProps {
   onSaved: (entry: JournalEntry) => void
   onCancel: () => void

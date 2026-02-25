@@ -3,8 +3,8 @@ import {
   GetEntriesParams,
   EntryListResponse,
   EntryPayload,
-} from '../types'
-import { request } from '../api'
+} from '@/types'
+import { request } from '@/api'
 
 export async function getEntries(
   params: GetEntriesParams = {},

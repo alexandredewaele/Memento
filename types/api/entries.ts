@@ -1,4 +1,4 @@
-import { EntryCategory, JournalEntry } from '../models'
+import { EntryCategory, JournalEntry } from '@/types/models'
 
 export interface GetEntriesParams {
   category?: EntryCategory

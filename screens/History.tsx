@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { JournalEntry } from '../types'
+import { JournalEntry } from '@/types'
 
 interface HistoryProps {
   entries: JournalEntry[]

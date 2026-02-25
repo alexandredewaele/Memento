@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { ScreenType, JournalEntry } from './types'
-import { AuthProvider, useAuth } from './context/AuthContext'
-import Home from './screens/Home'
-import Search from './screens/Search'
-import NewEntry from './screens/NewEntry'
-import History from './screens/History'
-import Login from './screens/Login'
-import Navigation from './components/Navigation'
-import * as api from './api/entries'
+import { ScreenType, JournalEntry } from '@/types'
+import { AuthProvider, useAuth } from '@/context/AuthContext'
+import Home from '@/screens/Home'
+import Search from '@/screens/Search'
+import NewEntry from '@/screens/NewEntry'
+import History from '@/screens/History'
+import Login from '@/screens/Login'
+import Navigation from '@/components/Navigation'
+import * as api from '@/api/entries'
 
 const AppContent: React.FC = () => {
   const { user, isLoading, logout } = useAuth()

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useAuth } from '../context/AuthContext'
-import { Button } from '../components/Button'
-import { Input } from '../components/Input'
+import { useAuth } from '@/context/AuthContext'
+import { Button } from '@/components/Button'
+import { Input } from '@/components/Input'
 const Login: React.FC = () => {
   const { login, register } = useAuth()
   const [tab, setTab] = useState<'login' | 'register'>('login')
